@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Saya - Haichal Candra A</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Kustom -->
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 60px;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/random/1600x900/?technology,code') no-repeat center center/cover;
+            color: white;
+            min-height: 80vh; 
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-img {
+            max-width: 250px;
+            width: 100%;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-section h1 {
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-weight: 300;
+            font-size: 1.2rem;
+        }
+
+        /* Section Styling */
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* About Section */
+        .about-img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background-color: var(--light-color);
+        }
+        
+        .skill-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .skill-box h4 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .skill-badge {
+            font-size: 0.9rem;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-weight: 400;
+        }
+
+        /* Achievements Section (Tanpa Animasi) */
+        .simple-list {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .simple-list li {
+            background-color: #fff;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .simple-list li h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .simple-list li p {
+            margin-bottom: 0;
+            color: var(--secondary-color);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section .section-title::after {
+            background-color: white;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            font-size: 2rem;
+            margin: 0 15px;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1d20;
+            color: var(--secondary-color);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Haichal Candra</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#beranda">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tentang">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#keahlian">Keahlian</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prestasi">Prestasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#kontak">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 text-center mb-4 mb-lg-0">
+                    <!-- GANTI DENGAN FOTO ANDA -->
+                    <img src="https://source.unsplash.com/random/400x400/?portrait,professional" alt="Foto Profil Haichal Candra" class="profile-img">
+                </div>
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1>Halo, Saya <span style="color: var(--primary-color);">Haichal Candra</span></h1>
+                    <p class="lead">Content Creator & Pelajar</p>
+                    <p>Saya adalah seorang pelajar SMAN 10 Garut yang masih duduk di bangku kelas 3. Saya memiliki ketertarikan pada dunia digital dan entertainment, serta senang berbagi cerita melalui konten.</p>
+                    <a href="#kontak" class="btn btn-primary btn-lg mt-3">Hubungi Saya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title">Tentang Saya</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://source.unsplash.com/random/600x400/?profile,person" alt="Tentang Saya" class="about-img">
+                </div>
+                <div class="col-lg-6">
+                    <p>Saya adalah seorang pelajar yang memiliki cita-cita yang terus berkembang. Saya percaya bahwa dengan terus belajar dan menekuni bidang yang diminati, maka dengan izin Allah saya akan berhasil.</p>
+                    <p>Di luar aktivitas sekolah, saya senang berlibur sambil menikmati makanan khas daerah dan berbaginya kepada orang lain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="keahlian" class="section-padding skills-section">
+        <div class="container">
+            <h2 class="text-center section-title">Keahlian Saya</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-box text-center">
+                        <h4><i class="bi bi-megaphone-fill"></i> Public Speaking</h4>
+                        <div>
+                            <span class="badge bg-primary skill-badge">Komunikasi Efektif</span>
+                            <span class="badge bg-success skill-badge">Kerja Sama Tim</span>
+                            <span class="badge bg-info skill-badge">Manajemen Waktu</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-box text-center">
+                        <h4><i class="bi bi-camera-reels-fill"></i> Content Creation</h4>
+                        <div>
+                            <span class="badge bg-danger skill-badge">Video Editing</span>
+                            <span class="badge bg-warning text-dark skill-badge">Mukbang</span>
+                            <span class="badge bg-primary skill-badge">Storytelling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="prestasi" class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title">Prestasi & Pengalaman</h2>
+            <ul class="simple-list">
+                <li>
+                    <h5><i class="bi bi-trophy-fill text-warning"></i> Juara 1 Pidato tingkat Kecamatan</h5>
+                    <p><i class="bi bi-calendar3"></i> Prestasi saat saya masih duduk di bangku Sekolah Dasar.</p>
+                </li>
+                <li>
+                    <h5><i class="bi bi-briefcase-fill text-primary"></i> Crew Event Organizer di Athena Grup</h5>
+                    <p><i class="bi bi-calendar3"></i> Berpengalaman dalam tim dan mampu menjalankan tugas dengan baik.</p>
+                </li>
+                <li>
+                    <h5><i class="bi bi-book-fill text-success"></i> Ranking 1 di Kelas</h5>
+                    <p><i class="bi bi-calendar3"></i> Mencapai peringkat terbaik di kelas selama beberapa semester berturut-turut.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="section-padding contact-section">
+        <div class="container">
+            <h2 class="text-center section-title">Hubungi Saya</h2>
+            <div class="contact-info">
+                <p><i class="bi bi-envelope-fill"></i> <a href="mailto:emailanda@example.com">emailanda@example.com</a></p>
+                <p><i class="bi bi-telephone-fill"></i> <a href="tel:+628123456789">+62 812-3456-789</a></p>
+                <p><i class="bi bi-geo-alt-fill"></i> Garut, Indonesia</p>
+                
+                <div class="social-links">
+                    <!-- GANTI # dengan link profil Anda -->
+                    <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="bi bi-tiktok"></i></a>
+                    <a href="#" target="_blank"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Portofolio Haichal Candra. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
