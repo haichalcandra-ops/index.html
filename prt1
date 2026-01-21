@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batagor Sultan - Kelezatan Asli Bandung</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Custom Variables & Global Styles --- */
+        :root {
+            --primary-color: #d35400; /* Warna saus kacang */
+            --secondary-color: #2c3e50;
+            --accent-color: #f39c12;
+            --bg-light: #fdfbf7;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Smooth Scroll --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- Navigation --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            transition: all 0.3s;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 500;
+            margin-left: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(211, 84, 0, 0.2);
+        }
+
+        .btn-custom:hover {
+            background-color: #a04000;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(211, 84, 0, 0.3);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            padding: 8px 25px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            padding: 140px 0 80px; /* Padding atas diperbesar untuk navbar fixed */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-img-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-img {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 20px 20px 0px rgba(211, 84, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            object-fit: cover;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .section-subtitle {
+            color: #888;
+            margin-bottom: 3rem;
+        }
+
+        /* --- About Section --- */
+        .about-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- Menu Cards (RESPONSIVE FIX) --- */
+        .menu-card {
+            border: none;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 100%; /* Pastikan tinggi kartu rata */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .card-img-wrapper {
+            overflow: hidden;
+            height: 250px; /* Tinggi gambar tetap */
+            position: relative;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Agar gambar tidak gepeng */
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .price-tag {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0.5rem 0;
+            display: block;
+        }
+
+        .mt-auto-btn {
+            margin-top: auto; /* Mendorong tombol ke bawah */
+        }
+
+        /* --- Features Section --- */
+        .feature-box {
+            padding: 2rem;
+            border-radius: 15px;
+            background: white;
+            transition: 0.3s;
+            height: 100%;
+            border: 1px solid #eee;
+        }
+
+        .feature-box:hover {
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Contact Section --- */
+        .contact-section {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: var(--primary-color);
+            background-color: #fff;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1a252f;
+            color: #bdc3c7;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* --- Floating WA Button --- */
+        .float-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .float-wa:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+            color: white;
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-section {
+                padding-top: 120px; /* Adjust for smaller navbars */
+                text-align: center;
+            }
+            .hero-text {
+                margin: 0 auto 2rem;
+            }
+            .hero-img {
+                margin-top: 2rem;
+                max-width: 280px;
+            }
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-basket-fill"></i> Batagor Sultan
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="#menu" class="btn btn-custom w-100">Pesan Sekarang</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-2 order-lg-1"> <!-- Mobile: image first, text second (flex order) -->
+                    <h1 class="hero-title">Renyah di Luar, <br><span style="color: var(--primary-color);">Lumer di Dalam</span></h1>
+                    <p class="hero-text">Nikmati sensasi Batagor Bandung asli dengan bumbu kacang yang kaya rasa dan tekstur ikan tenggiri yang premium.</p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#menu" class="btn btn-custom shadow">Lihat Menu</a>
+                        <a href="#about" class="btn btn-outline-custom">Tentang Kami</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 text-center mb-4 mb-lg-0">
+                    <div class="hero-img-container">
+                        <!-- Menggunakan keyword 'dumpling' yang mendekati tampilan batagor -->
+                        <img src="https://loremflickr.com/600/600/dumpling,friedfood" alt="Batagor Premium" class="hero-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="bg-white">
+        <div class="container">
+            <div class="row align-items-center flex-lg-row-reverse">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="about-img">
+                        <img src="https://loremflickr.com/600/400/cooking,kitchen" alt="Proses Pembuatan" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <h5 class="text-uppercase text-primary ls-2">Cerita Kami</h5>
+                    <h2 class="section-title text-start ms-0">Resep Warisan Turun Temurun</h2>
+                    <p class="text-muted">Batagor Sultan hadir untuk membawa keautentikan rasa jajanan khas Bandung ke meja makan Anda. Sejak tahun 2010, kami berkomitmen menggunakan hanya ikan tenggiri segar pilihan tanpa pengawet buatan.</p>
+                    <p class="text-muted">Rahasia kelezatan kami terletak pada perpaduan tepung kanji berkualitas dan bumbu kacang yang dihaluskan secara manual, menghasilkan tekstur renyah tahan lama dan rasa gurih yang tak tertandingi.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <h3 class="fw-bold">10+</h3>
+                            <p class="text-muted small">Tahun Pengalaman</p>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="fw-bold">50k+</h3>
+                            <p class="text-muted small">Pelanggan Puas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-box text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-fish"></i>
+                        </div>
+                        <h4>Ikan Tenggiri Asli</h4>
+                        <p class="text-muted small">Kami tidak menggunakan campuran daging lain. 100% daging ikan tenggiri segar untuk gizi dan rasa terbaik.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-droplet-fill"></i>
+                        </div>
+                        <h4>Bumbu Kacang Spesial</h4>
+                        <p class="text-muted small">Resep bumbu kacang rahasia kami memberikan keseimbangan rasa pedas, manis, dan gurih yang sempurna.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h4>Halal & Higienis</h4>
+                        <p class="text-muted small">Proses memasak yang bersih dan bahan-bahan yang terjamin kehalalannya untuk kenyamanan Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Menu Favorit</h2>
+                <p class="section-subtitle">Pilihan terbaik yang paling digemari pelanggan</p>
+            </div>
+
+            <!-- Grid System: Col-1 (Mobile), Col-2 (Tablet), Col-3 (Desktop) -->
+            <div class="row g-4">
+                
+                <!-- Item 1: Batagor Original -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="menu-card">
+                        <div class="card-img-wrapper">
+                            <!-- Gambar menggunakan keyword batagor/dumpling -->
+                            <img src="https://loremflickr.com/400/300/batagor,dumpling" class="card-img-top" alt="Batagor Original" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Batagor Original (5pcs)</h5>
+                            <p class="card-text text-muted small">Batagor renyah dengan isian ikan tenggiri padat. Disajikan dengan bumbu kacang.</p>
+                            <span class="price-tag">Rp 25.000</span>
+                            <a href="#" onclick="pesanMenu('Batagor Original')" class="btn btn-outline-custom btn-sm w-100 mt-auto-btn">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Batagor Pedas -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="menu-card">
+                        <div class="position-absolute z-1 m-3 badge bg-danger">Best Seller</div>
+                        <div class="card-img-wrapper">
+                            <!-- Gambar spicy/dumpling -->
+                            <img src="https://loremflickr.com/400/300/spicy,indonesianfood" class="card-img-top" alt="Batagor Pedas" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Batagor Super Pedas</h5>
+                            <p class="card-text text-muted small">Sensasi pedas nendang yang bikin ketagihan. Cocok untuk pecinta pedas.</p>
+                            <span class="price-tag">Rp 28.000</span>
+                            <a href="#" onclick="pesanMenu('Batagor Pedas')" class="btn btn-custom btn-sm w-100 mt-auto-btn">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Batagor Kuah -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="menu-card">
+                        <div class="card-img-wrapper">
+                            <!-- Gambar soup/bowl -->
+                            <img src="https://loremflickr.com/400/300/soup,bowl" class="card-img-top" alt="Batagor Kuah" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Batagor Kuah Kencur</h5>
+                            <p class="card-text text-muted small">Varian kuah hangat dengan aroma kencur yang kuat, menenangkan perut.</p>
+                            <span class="price-tag">Rp 27.000</span>
+                            <a href="#" onclick="pesanMenu('Batagor Kuah')" class="btn btn-outline-custom btn-sm w-100 mt-auto-btn">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Item 4: Siomay -->
+                 <div class="col-12 col-md-6 col-lg-4">
+                    <div class="menu-card">
+                        <div class="card-img-wrapper">
+                            <!-- Gambar siomay/steamed -->
+                            <img src="https://loremflickr.com/400/300/siomay,steamedfood" class="card-img-top" alt="Siomay Ayam" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Siomay Ayam (5pcs)</h5>
+                            <p class="card-text text-muted small">Siomay lembut berbahan dasar ayam pilihan, dikukus sempurna.</p>
+                            <span class="price-tag">Rp 20.000</span>
+                            <a href="#" onclick="pesanMenu('Siomay Ayam')" class="btn btn-outline-custom btn-sm w-100 mt-auto-btn">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Tahu -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="menu-card">
+                        <div class="card-img-wrapper">
+                            <!-- Gambar tofu/fried -->
+                            <img src="https://loremflickr.com/400/300/tofu,fried" class="card-img-top" alt="Tahu Crispy" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Tahu Goreng Crispy (5pcs)</h5>
+                            <p class="card-text text-muted small">Tahu sumedang digoreng kering super renyah, gurih pas dimakan begitu saja.</p>
+                            <span class="price-tag">Rp 15.000</span>
+                            <a href="#" onclick="pesanMenu('Tahu Crispy')" class="btn btn-outline-custom btn-sm w-100 mt-auto-btn">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Paket Komplit -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="menu-card">
+                        <div class="card-img-wrapper">
+                            <!-- Gambar plate/indonesianfood -->
+                            <img src="https://loremflickr.com/400/300/indonesianfood,plate" class="card-img-top" alt="Paket Komplit" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Paket Sultan (Komplit)</h5>
+                            <p class="card-text text-muted small">3 Batagor, 2 Siomay, dan Tahu. Porsi paling puas!</p>
+                            <span class="price-tag">Rp 40.000</span>
+                            <a href="#" onclick="pesanMenu('Paket Sultan')" class="btn btn-custom btn-sm w-100 mt-auto-btn">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="section-title text-white" style="color: white !important;">Hubungi Kami</h2>
+                        <p class="text-white-50">Mau pesan untuk acara atau tanya ketersediaan stok? Kirimkan pesan Anda.</p>
+                    </div>
+                    <div class="contact-form">
+                        <form onsubmit="handleForm(event)">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">No. WhatsApp</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="0812xxxx" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="order" class="form-label">Pesanan</label>
+                                <select class="form-select" id="order">
+                                    <option selected>Pilih Menu</option>
+                                    <option>Batagor Original</option>
+                                    <option>Batagor Pedas</option>
+                                    <option>Paket Sultan</option>
+                                    <option>Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Pesan Tambahan</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Tulis pesan atau alamat pengiriman..."></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-custom">Kirim Pesan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white mb-3">Batagor Sultan</h5>
+                    <p class="small">Menghadirkan kebahagiaan melalui setiap gigitan batagor renyah dengan bumbu kacang yang otentik.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white mb-3">Tautan Cepat</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="#home" class="text-decoration-none text-muted hover-white">Beranda</a></li>
+                        <li><a href="#about" class="text-decoration-none text-muted hover-white">Tentang Kami</a></li>
+                        <li><a href="#menu" class="text-decoration-none text-muted hover-white">Menu</a></li>
+                        <li><a href="#contact" class="text-decoration-none text-muted hover-white">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white mb-3">Kontak</h5>
+                    <p class="small"><i class="bi bi-geo-alt me-2"></i> Jl. Braga No. 10, Bandung, Jawa Barat</p>
+                    <p class="small"><i class="bi bi-whatsapp me-2"></i> +62 812 3456 7890</p>
+                    <p class="small"><i class="bi bi-envelope me-2"></i> order@batagorsultan.com</p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <p class="mb-0 small">&copy; 2023 Batagor Sultan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" class="float-wa" target="_blank" title="Chat WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Script untuk menutup navbar saat diklik di mobile
+        const navLinks = document.querySelectorAll('.nav-item .nav-link:not(.btn-custom)');
+        const menuToggle = document.getElementById('navbarNav');
+        const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
+        
+        navLinks.forEach((l) => {
+            l.addEventListener('click', () => {
+                if(menuToggle.classList.contains('show')) {
+                    bsCollapse.toggle();
+                }
+            })
+        });
+
+        // Script sederhana untuk simulasi tombol pesan
+        function pesanMenu(namaMenu) {
+            alert("Anda memilih: " + namaMenu + "\nAnda akan diarahkan ke WhatsApp untuk pemesanan.");
+        }
+
+        // Script untuk form kontak
+        function handleForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            alert("Terima kasih, " + name + "! Pesanan Anda telah kami terima. Kami akan segera menghubungi Anda.");
+        }
+    </script>
+</body>
+</html>
